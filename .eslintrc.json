@@ -2,6 +2,5 @@
 {
   "extends": "react-app",
   "rules": {
-    "no-debugger": "warn"
   }
 }
