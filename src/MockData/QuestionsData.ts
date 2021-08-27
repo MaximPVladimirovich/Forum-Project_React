@@ -14,6 +14,10 @@ export interface AnswerData {
   created: Date;
 }
 
+const wait = (ms: number): Promise<void> => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
 const questions: QuestionData[] = [
   {
     questionId: 1,
