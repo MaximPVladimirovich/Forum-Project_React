@@ -23,7 +23,14 @@ export const HomePage = function() {
         <h2>Unanswered Questions</h2>
         <button>Ask a question</button>
       </div>
-      <QuestionList data={questions}/>
+      {
+      questionsLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <QuestionList data={questions || [] }/> 
+      )
+    }
     </div>
+    
   )
 }
