@@ -1,5 +1,5 @@
 import React from 'react'
-// import { QuestionList } from '../Componentns/QuestionList' 
+import { QuestionList } from '../Components/QuestionList' 
 import {getUnansweredQuestions, QuestionData} from '../MockData/QuestionsData'
 
 
@@ -10,6 +10,9 @@ export const HomePage = function() {
   React.useEffect( () => {
     const doGetUnansweredQuestions = async () => {
       const unansweredQuestions = await getUnansweredQuestions()
+      setQuestions(unansweredQuestions)
+      setQuestionsLoading(false)
+
     }
     doGetUnansweredQuestions()
   }, [])
@@ -20,7 +23,7 @@ export const HomePage = function() {
         <h2>Unanswered Questions</h2>
         <button>Ask a question</button>
       </div>
-      {/* <QuestionList data={getUnansweredQuestions()/> */}
+      <QuestionList data={questions}/>
     </div>
   )
 }
