@@ -1,9 +1,11 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import React from 'react'
 import { QuestionList } from '../Components/QuestionList' 
 import {getUnansweredQuestions, QuestionData} from '../MockData/QuestionsData'
 
 
-export const Page = function() {
+export const HomePage = function() {
   const [questions, setQuestions] = React.useState<QuestionData[]>([])
   const [questionsLoading, setQuestionsLoading] = React.useState(true)
 
@@ -21,7 +23,11 @@ export const Page = function() {
   }
 
   return (
-    <div>
+    <div css={css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  `}>
       <div>
         <h2>Unanswered Questions</h2>
         <button onClick={handleAskQuestion}>Ask a question</button>
