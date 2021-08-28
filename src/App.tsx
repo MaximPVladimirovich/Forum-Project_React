@@ -4,12 +4,14 @@ import React from 'react';
 import { Header } from './Components/Header'
 import { HomePage } from './Pages/HomePage'
 
+import {fontFamily, fontSize, gray2} from './css/Styles'
+
 function App() {
   return (
     <div css={css`
-    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-    font-size: 16px;
-    color: #5c5a5a;
+    font-family: ${fontFamily};
+    font-size: ${fontSize};
+    color: ${gray2};
     `
     }>
       <Header />
