@@ -43,9 +43,28 @@ const questions: QuestionData[] = [
       },
     ],
   },
+
   {
     questionId: 2,
     title: "Which state management tool should I use?",
+    content:
+      "There seem to be a fair few state management tools around for React - React, Unstated, ... which one should I use?",
+    userName: "Bob",
+    created: new Date(),
+    answers: [],
+  },
+  {
+    questionId: 3,
+    title: "Can I get a tech job without a degree?",
+    content:
+      "There seem to be a fair few state management tools around for React - React, Unstated, ... which one should I use?",
+    userName: "Bob",
+    created: new Date(),
+    answers: [],
+  },
+  {
+    questionId: 2,
+    title: "How to program well",
     content:
       "There seem to be a fair few state management tools around for React - React, Unstated, ... which one should I use?",
     userName: "Bob",
