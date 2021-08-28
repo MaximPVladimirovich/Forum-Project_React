@@ -10,6 +10,7 @@ import { AskPage } from './Pages/AskPage'
 import { SignInPage } from './Pages/SignInPage'
 import { SearchPage } from './Pages/SearchPage'
 import { QuestionPage } from './Pages/QuestionPage'
+import { NotFoundPage} from './Pages/NotFoundPage'
 
 
 import {fontFamily, fontSize, gray2} from './css/Styles'
@@ -28,6 +29,9 @@ function App() {
         <Route path="/ask" component={AskPage} />
         <Route path="/signin" component={SignInPage } />
         <Route path="/search" component={SearchPage } />
+        <Route path='/question' component={QuestionPage} />
+        {/* Not Found */}
+        <Route path="*" component={NotFoundPage} />
       </Switch>
     </div>
   </BrowserRouter>
