@@ -60,3 +60,13 @@ export const getUnansweredQuestions = async (): Promise<QuestionData[]> => {
     return q.answers.length === 0;
   });
 };
+
+export const getQuestion = async (
+  questionId: number
+): Promise<QuestionData | null> => {
+  await wait(500);
+  const results = questions.filter(function (q) {
+    return q.questionId === questionId;
+  });
+  return results.length === 0 ? null : results[0];
+};
