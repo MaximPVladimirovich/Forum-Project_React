@@ -3,7 +3,7 @@ import { QuestionList } from '../Components/QuestionList'
 import {getUnansweredQuestions, QuestionData} from '../MockData/QuestionsData'
 
 
-export const HomePage = function() {
+export const Page = function() {
   const [questions, setQuestions] = React.useState<QuestionData[]>([])
   const [questionsLoading, setQuestionsLoading] = React.useState(true)
 

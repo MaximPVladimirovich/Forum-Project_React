@@ -2,7 +2,7 @@
 import { css } from '@emotion/react'
 import React from 'react';
 import { Header } from './Components/Header'
-import { HomePage } from './Pages/HomePage'
+import { Page } from './Pages/HomePage'
 
 import {fontFamily, fontSize, gray2} from './css/Styles'
 
@@ -15,7 +15,7 @@ function App() {
     `
     }>
       <Header />
-      <HomePage />
+      <Page />
     </div>
   );
 }
