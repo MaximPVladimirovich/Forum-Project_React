@@ -5,6 +5,7 @@ import { QuestionList } from '../Components/QuestionList'
 import {getUnansweredQuestions, QuestionData} from '../MockData/QuestionsData'
 import { PageTitle } from '../Components/PageTitle'
 import { Page } from '../Components/Page'
+import { PrimaryButton } from '../css/Styles'
 
 
 export const HomePage = function() {
@@ -32,7 +33,7 @@ export const HomePage = function() {
     justify-content: space-between; 
   `}>
         <PageTitle>Unanswered Questions</PageTitle>
-        <button onClick={handleAskQuestion}>Ask a question</button>
+        <PrimaryButton onClick={handleAskQuestion}>Ask a question</PrimaryButton>
       </div>
       {
       questionsLoading ? (
