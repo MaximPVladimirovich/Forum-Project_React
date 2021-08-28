@@ -3,6 +3,8 @@ import { css } from '@emotion/react'
 import React from 'react'
 import { QuestionList } from '../Components/QuestionList' 
 import {getUnansweredQuestions, QuestionData} from '../MockData/QuestionsData'
+import { PageTitle } from '../Components/PageTitle'
+import { Page } from '../Components/Page'
 
 
 export const HomePage = function() {
@@ -23,13 +25,13 @@ export const HomePage = function() {
   }
 
   return (
-    <div css={css`
+    <Page >
+      <div css={css`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; 
   `}>
-      <div>
-        <h2>Unanswered Questions</h2>
+        <PageTitle>Unanswered Questions</PageTitle>
         <button onClick={handleAskQuestion}>Ask a question</button>
       </div>
       {
@@ -39,7 +41,7 @@ export const HomePage = function() {
         <QuestionList data={questions || [] }/> 
       )
     }
-    </div>
+    </Page>
     
   )
 }
