@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
+import styles from './App.module.css';
 import { Header } from './Components/Header'
 import { HomePage } from './Pages/HomePage'
 
 function App() {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Header />
       <HomePage />
     </div>
