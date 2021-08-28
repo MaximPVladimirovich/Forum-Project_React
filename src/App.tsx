@@ -4,9 +4,8 @@ import { Header } from './Components/Header'
 import { HomePage } from './Pages/HomePage'
 
 function App() {
-  debugger;
   return (
-    <div className="App">
+    <div className="container">
       <Header />
       <HomePage />
     </div>

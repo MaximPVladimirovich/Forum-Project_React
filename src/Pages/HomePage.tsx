@@ -24,7 +24,7 @@ export const HomePage = function() {
     <div>
       <div>
         <h2>Unanswered Questions</h2>
-        <button onClick={handleAskQuestion}>Ask a questio</button>
+        <button onClick={handleAskQuestion}>Ask a question</button>
       </div>
       {
       questionsLoading ? (

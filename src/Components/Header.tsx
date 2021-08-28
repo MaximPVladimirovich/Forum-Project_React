@@ -1,4 +1,5 @@
 import React from 'react'
+import '../css/Header.css'
 
 export const Header = function() {
 
@@ -7,7 +8,7 @@ export const Header = function() {
   }
 
   return (
-    <div>
+    <div className="container">
       <a href='./'>Chattaway</a>
       <input type='text' placeholder='Search...' onChange={handleSearchInputChange}/>
       <a href='./signin'><span>Sign in</span></a>
