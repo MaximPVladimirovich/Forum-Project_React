@@ -29,7 +29,7 @@ function App() {
         <Route path="/ask" element={<AskPage/>} />
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path='/question' element={<QuestionPage/>} />
+        <Route path='/question/:questionId' element={<QuestionPage/>} />
         {/* Not Found */}
         <Route path="*" element={<NotFoundPage/>} />
       </Routes>
