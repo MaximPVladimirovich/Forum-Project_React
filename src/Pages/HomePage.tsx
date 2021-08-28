@@ -6,6 +6,7 @@ import {getUnansweredQuestions, QuestionData} from '../MockData/QuestionsData'
 import { PageTitle } from '../Components/PageTitle'
 import { Page } from '../Components/Page'
 import { PrimaryButton } from '../css/Styles'
+import { useNavigate } from 'react-router-dom'
 
 
 export const HomePage = function() {
@@ -20,9 +21,11 @@ export const HomePage = function() {
     }
     doGetUnansweredQuestions()
   }, [])
+  let navigate = useNavigate()
+
 
   const handleAskQuestion = function() {
-    return console.log('Todo - move to ask page')
+    return navigate("/ask")
   }
 
   return (

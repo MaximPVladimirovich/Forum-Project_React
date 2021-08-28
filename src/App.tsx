@@ -5,7 +5,7 @@ import { Header } from './Components/Header'
 import { HomePage } from './Pages/HomePage'
 
 // Routing
-import { BrowserRouter, Switch,  Route} from 'react-router-dom'
+import { BrowserRouter, Routes,  Route} from 'react-router-dom'
 import { AskPage } from './Pages/AskPage'
 import { SignInPage } from './Pages/SignInPage'
 import { SearchPage } from './Pages/SearchPage'
@@ -24,15 +24,15 @@ function App() {
     color: ${gray2};
     `}>
       <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/ask" component={AskPage} />
-        <Route path="/signin" component={SignInPage } />
-        <Route path="/search" component={SearchPage } />
-        <Route path='/question' component={QuestionPage} />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/ask" element={<AskPage/>} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path='/question' element={<QuestionPage/>} />
         {/* Not Found */}
-        <Route path="*" component={NotFoundPage} />
-      </Switch>
+        <Route path="*" element={<NotFoundPage/>} />
+      </Routes>
     </div>
   </BrowserRouter>
   );
