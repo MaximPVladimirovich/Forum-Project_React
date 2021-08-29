@@ -3,20 +3,19 @@ import { css } from '@emotion/react';
 import { fontFamily, fontSize, gray1, gray2, gray5 } from '../css/Styles';
 import React from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+
+type FormData = {
+  search: string;
+};
 
 export const Header = function () {
+  const { register } = useForm<FormData>();
   const [searchParams] = useSearchParams();
   const criteria = searchParams.get('criteria') || '';
 
-  const [search, setSearch] = React.useState(criteria)
-
-  const handleSearchInputChange = function (e: React.ChangeEvent<HTMLInputElement>) {
-    setSearch(e.currentTarget.value)
-  }
-
-  const handleSubmit = function (e: React.FormEvent) {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log(search)
   }
 
   return (
@@ -42,7 +41,12 @@ export const Header = function () {
       `}
       >Chattaway</Link>
       <form onSubmit={handleSubmit}>
-        <input css={css`
+        <input 
+          name="search"
+          type='text'
+          placeholder='Search...'
+          defaultValue={criteria}
+          css={css`
       box-sizing: border-box;
       font-family: ${fontFamily};
       font-size: ${fontSize};
@@ -56,10 +60,7 @@ export const Header = function () {
         outline-color: ${gray5};
       }
       `}
-          type='text'
-          placeholder='Search...'
-          value={search}
-          onChange={handleSearchInputChange} />
+        />
       </form>
       <Link to='/signin'
         css={css`
