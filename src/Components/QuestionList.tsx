@@ -23,15 +23,15 @@ export const QuestionList = function({data}: Props) {
     `}>
       {data.map(function(question) {
         return (
-          <>
           <li key={question.questionId}
-          css={css`border-top: 1px solid ${gray5};
+          css={css`
+          border-top: 1px solid ${gray5};
           :first-of-type {
-            border-top: none
-          }`}>
+          border-top: none;
+          }`
+          }>
             <Question data={question} />
-            </li>
-          </>
+          </li>
         )
       })}
     </ul>

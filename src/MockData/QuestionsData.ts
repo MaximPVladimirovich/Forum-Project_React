@@ -26,45 +26,11 @@ const questions: QuestionData[] = [
       "TypeScript seems to be getting popular so I wondered whether it is worth my time learning it? What benefits does it give over JavaScript?",
     userName: "Bob",
     created: new Date(),
-    answers: [
-      {
-        answerId: 1,
-        content: "To catch problems earlier speeding up your developments",
-        userName: "Jane",
-        created: new Date(),
-      },
-      {
-        answerId: 2,
-        content:
-          "So, that you can use the JavaScript features of tomorrow, today",
-
-        userName: "Fred",
-        created: new Date(),
-      },
-    ],
+    answers: [],
   },
-
   {
     questionId: 2,
     title: "Which state management tool should I use?",
-    content:
-      "There seem to be a fair few state management tools around for React - React, Unstated, ... which one should I use?",
-    userName: "Bob",
-    created: new Date(),
-    answers: [],
-  },
-  {
-    questionId: 3,
-    title: "Can I get a tech job without a degree?",
-    content:
-      "There seem to be a fair few state management tools around for React - React, Unstated, ... which one should I use?",
-    userName: "Bob",
-    created: new Date(),
-    answers: [],
-  },
-  {
-    questionId: 2,
-    title: "How to program well",
     content:
       "There seem to be a fair few state management tools around for React - React, Unstated, ... which one should I use?",
     userName: "Bob",
@@ -88,4 +54,16 @@ export const getQuestion = async (
     return q.questionId === questionId;
   });
   return results.length === 0 ? null : results[0];
+};
+
+export const searchQuestions = async (
+  criteria: string
+): Promise<QuestionData[]> => {
+  await wait(500);
+  return questions.filter(function (q) {
+    return (
+      q.title.toLowerCase().indexOf(criteria.toLowerCase()) >= 0 ||
+      q.content.toLowerCase().indexOf(criteria.toLowerCase()) >= 0
+    );
+  });
 };

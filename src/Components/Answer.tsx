@@ -5,7 +5,7 @@ import { AnswerData } from '../MockData/QuestionsData';
 import { gray3 } from '../css/Styles';
 
 interface Props {
-  data: AnswerData
+  data: AnswerData;
 }
 
 export const Answer = function({data}: Props) {
@@ -17,7 +17,6 @@ export const Answer = function({data}: Props) {
       <div>
         {`Answered by ${data.userName} on ${data.created.toLocaleDateString()} ${data.created.toLocaleTimeString()}`}
       </div>
-
     </div>
   )
 }
