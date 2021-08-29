@@ -2,12 +2,21 @@
 import { css } from '@emotion/react';
 import { fontFamily, fontSize, gray1, gray2, gray5 } from '../css/Styles';
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 
-export const Header = function() {
+export const Header = function () {
+  const [searchParams] = useSearchParams();
+  const criteria = searchParams.get('criteria') || '';
 
-  const handleSearchInputChange = function(e: React.ChangeEvent<HTMLInputElement>) {
-    return console.log(e.currentTarget.value)
+  const [search, setSearch] = React.useState(criteria)
+
+  const handleSearchInputChange = function (e: React.ChangeEvent<HTMLInputElement>) {
+    setSearch(e.currentTarget.value)
+  }
+
+  const handleSubmit = function (e: React.FormEvent) {
+    e.preventDefault()
+    console.log(search)
   }
 
   return (
@@ -32,8 +41,8 @@ export const Header = function() {
       text-decoration: none
       `}
       >Chattaway</Link>
-
-      <input css={ css`
+      <form onSubmit={handleSubmit}>
+        <input css={css`
       box-sizing: border-box;
       font-family: ${fontFamily};
       font-size: ${fontSize};
@@ -47,9 +56,13 @@ export const Header = function() {
         outline-color: ${gray5};
       }
       `}
-      type='text' placeholder='Search...' onChange={handleSearchInputChange}/>
+          type='text'
+          placeholder='Search...'
+          value={search}
+          onChange={handleSearchInputChange} />
+      </form>
       <Link to='/signin'
-      css={css`
+        css={css`
       font-family: ${fontFamily};
       font-size: ${fontSize};
       padding: 5px 10px;
