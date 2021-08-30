@@ -14,6 +14,7 @@ import {
   PrimaryButton,
   FieldTextArea,
   FieldLabel,
+  FieldError
 } from '../css/Styles'
 
 
@@ -22,7 +23,7 @@ type FormData = {
 }
 
 export const QuestionPage = function () {
-  const { register } = useForm<FormData>()
+  const { register, formState: { errors } } = useForm<FormData>()
   const [question, setQuestion] = React.useState<QuestionData | null>(null);
 
   const { questionId } = useParams()
@@ -71,8 +72,12 @@ export const QuestionPage = function () {
                 <FieldLabel>
                   Your answer
                 </FieldLabel>
-                <FieldTextArea>
+                <FieldTextArea
+                  id='content'
+                  {...register('content', { required: true, minLength: 50 })}>
                 </FieldTextArea>
+                {errors.content && errors.content.type === 'required' && (<FieldError>You must enter the answer</FieldError>)}
+                {errors.content && errors.content.type === 'minLength' && (<FieldError>The length must be at least 50 characters</FieldError>)}
                 <FormButtonContainer>
                   <PrimaryButton>
                     Submit Answer
