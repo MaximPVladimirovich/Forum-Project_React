@@ -1,18 +1,21 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { gray6 } from '../css/Styles';
 import React from 'react'
 import { Page } from '../Components/Page'
 import { useParams } from 'react-router-dom'
 import { QuestionData, getQuestion } from '../MockData/QuestionsData'
 import { AnswerList } from '../Components/AnswerList'
 import { useForm } from 'react-hook-form'
-import { Fieldset } from '../css/Styles'
-import { FieldContainer } from '../css/Styles'
-import { FieldLabel } from '../css/Styles'
-import { FieldTextArea } from '../css/Styles'
-import { FormButtonContainer } from '../css/Styles'
-import { PrimaryButton } from '../css/Styles'
+import {
+  gray6,
+  Fieldset,
+  FieldContainer,
+  FormButtonContainer,
+  PrimaryButton,
+  FieldTextArea,
+  FieldLabel,
+} from '../css/Styles'
+
 
 type FormData = {
   content: string;
