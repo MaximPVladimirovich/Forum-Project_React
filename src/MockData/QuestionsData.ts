@@ -89,3 +89,27 @@ export const postQuestion = async (
   questions.push(newQuestion);
   return newQuestion;
 };
+
+// Simulates posting an answer
+export interface PostAnswerData {
+  questionId: number;
+  content: string;
+  userName: string;
+  created: Date;
+}
+
+// Find question and add answer to answer array
+export const PostAnswer = async function (
+  answer: PostAnswerData
+): Promise<AnswerData | undefined> {
+  await wait(500);
+  const question = questions.filter(
+    (q) => q.questionId === answer.questionId
+  )[0];
+  const answerInQuestion: AnswerData = {
+    answerId: 99,
+    ...answer,
+  };
+  question.answers.push(answerInQuestion);
+  return answerInQuestion;
+};

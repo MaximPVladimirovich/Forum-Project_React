@@ -32,7 +32,7 @@ export const AskPage = function () {
   return (
     <Page title='Ask a question'>
       <form onSubmit={handleSubmit(submitForm)}>
-        <Fieldset>
+        <Fieldset disabled={formState.isSubmitting || successfullySubmitted}>
           <FieldContainer>
             <FieldLabel htmlFor="title">
               Title
@@ -57,6 +57,7 @@ export const AskPage = function () {
               Submit Question
             </PrimaryButton>
           </FormButtonContainer>
+          {successfullySubmitted && (<SubmissionSuccess> Your question was successfully submitted</SubmissionSuccess>)}
         </Fieldset>
       </form>
     </Page>
