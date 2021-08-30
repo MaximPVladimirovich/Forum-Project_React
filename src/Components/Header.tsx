@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 import { fontFamily, fontSize, gray1, gray2, gray5 } from '../css/Styles';
 import React from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 type FormData = {
@@ -10,13 +10,15 @@ type FormData = {
 };
 
 export const Header = function () {
-  const { register } = useForm<FormData>();
+  const navigate = useNavigate()
+  const { register, handleSubmit } = useForm<FormData>();
   const [searchParams] = useSearchParams();
   const criteria = searchParams.get('criteria') || '';
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-  }
+  // Desctructures for and takes in search fields
+  const submitForm = function ({ search }: FormData) {
+    navigate(`search?criteria=${search}`);
+  };
 
   return (
     <div css={css`
@@ -40,7 +42,7 @@ export const Header = function () {
       text-decoration: none
       `}
       >Chattaway</Link>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(submitForm)}>
         <input
           // Tells react hook form which fields to manage
           {...register("search")}
