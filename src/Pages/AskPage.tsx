@@ -1,5 +1,6 @@
 import React from 'react'
 import { Page } from '../Components/Page'
+import { postQuestion } from '../MockData/QuestionsData'
 import { useForm } from 'react-hook-form'
 import { Fieldset } from '../css/Styles'
 import { FieldLabel } from '../css/Styles'
@@ -7,7 +8,7 @@ import { FieldInput } from '../css/Styles'
 import { FieldContainer } from '../css/Styles'
 import { FieldTextArea } from '../css/Styles'
 import { FormButtonContainer } from '../css/Styles'
-import { PrimaryButton, FieldError } from '../css/Styles'
+import { PrimaryButton, FieldError, SubmissionSuccess } from '../css/Styles'
 
 type FormData = {
   title: string;
@@ -16,10 +17,21 @@ type FormData = {
 
 
 export const AskPage = function () {
-  const { register, formState: { errors } } = useForm<FormData>({ mode: 'onBlur' });
+  const [successfullySubmitted, setSuccessfullySubmitted] = React.useState(false)
+  const { register, handleSubmit, formState: { errors }, formState } = useForm<FormData>({ mode: 'onBlur' });
+
+  const submitForm = async function (data: FormData) {
+    const result = await postQuestion({
+      title: data.title,
+      content: data.content,
+      userName: 'Fred',
+      created: new Date()
+    })
+    setSuccessfullySubmitted(result ? true : false)
+  }
   return (
     <Page title='Ask a question'>
-      <form>
+      <form onSubmit={handleSubmit(submitForm)}>
         <Fieldset>
           <FieldContainer>
             <FieldLabel htmlFor="title">
