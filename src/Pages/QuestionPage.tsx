@@ -81,7 +81,8 @@ export const QuestionPage = function () {
           </div>
           <AnswerList data={question.answers} />
           <form onSubmit={handleSubmit(submitForm)}>
-            <Fieldset>
+            {/* Disables form if submission in progress or completed */}
+            <Fieldset disabled={formState.isSubmitting || successfullySubmitted}>
               <FieldContainer>
                 <FieldLabel>
                   Your answer
@@ -97,6 +98,8 @@ export const QuestionPage = function () {
                     Submit Answer
                   </PrimaryButton>
                 </FormButtonContainer>
+                {successfullySubmitted && (<SubmissionSuccess>
+                  Your answer was successfully submitted</SubmissionSuccess>)}
               </FieldContainer>
             </Fieldset>
           </form>
