@@ -77,3 +77,29 @@ export const FieldContainer = styled.div`
 export const FieldLabel = styled.label`
   font-weight: bold;
 `;
+
+export const FieldTextArea = styled.textarea`
+  ${baseFieldCSS}
+  height: 100px
+`;
+
+export const FieldError = styled.div`
+  font-size: 12px;
+  color: red;
+`;
+
+export const FormButtonContainer = styled.div`
+  margin: 30px 0px 0px 0px;
+  padding: 20px 0px 0px 0px;
+  border-top: 1px solid ${gray5};
+`;
+
+export const SubmissionSuccess = styled.div`
+  margin-top: 10px;
+  color: green;
+`;
+
+export const SubmissionFailure = styled.div`
+  margin-top: 10px;
+  color: red;
+`;

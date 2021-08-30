@@ -41,7 +41,9 @@ export const Header = function () {
       `}
       >Chattaway</Link>
       <form onSubmit={handleSubmit}>
-        <input 
+        <input
+          // Tells react hook form which fields to manage
+          {...register("search")}
           name="search"
           type='text'
           placeholder='Search...'
