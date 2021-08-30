@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import React from 'react'
 import { Page } from '../Components/Page'
 import { useParams } from 'react-router-dom'
-import { QuestionData, getQuestion } from '../MockData/QuestionsData'
+import { QuestionData, getQuestion, PostAnswer } from '../MockData/QuestionsData'
 import { AnswerList } from '../Components/AnswerList'
 import { useForm } from 'react-hook-form'
 import {
@@ -14,7 +14,8 @@ import {
   PrimaryButton,
   FieldTextArea,
   FieldLabel,
-  FieldError
+  FieldError,
+  SubmissionSuccess
 } from '../css/Styles'
 
 
@@ -23,7 +24,8 @@ type FormData = {
 }
 
 export const QuestionPage = function () {
-  const { register, formState: { errors } } = useForm<FormData>()
+  const [successfullySubmitted, setSuccessfullySubmitted] = React.useState(false)
+  const { register, formState: { errors }, handleSubmit, formState } = useForm<FormData>()
   const [question, setQuestion] = React.useState<QuestionData | null>(null);
 
   const { questionId } = useParams()
@@ -40,6 +42,18 @@ export const QuestionPage = function () {
       doGetQuestion(Number(questionId));
     }
   }, [questionId]);
+
+  const submitForm = async (data: FormData) => {
+    const result = await PostAnswer({
+      questionId: question!.questionId,
+      content: data.content,
+      userName: "Fred",
+      created: new Date(),
+    })
+    setSuccessfullySubmitted(
+      result ? true : false,
+    )
+  }
 
   return (
     <Page>
@@ -66,7 +80,7 @@ export const QuestionPage = function () {
             {`Asked by ${question.userName} on ${question.created.toLocaleDateString()} ${question.created.toLocaleTimeString()}`}
           </div>
           <AnswerList data={question.answers} />
-          <form>
+          <form onSubmit={handleSubmit(submitForm)}>
             <Fieldset>
               <FieldContainer>
                 <FieldLabel>
