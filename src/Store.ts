@@ -55,7 +55,7 @@ export const gotQuestionAction = (question: QuestionData[] | null) =>
 
 // Searching for questions
 export const SEARCHINGQUESTIONS = "SearchingQuestions";
-export const searchingQuestionsActions = () =>
+export const searchingQuestionsAction = () =>
   ({
     type: SEARCHINGQUESTIONS,
   } as const);
@@ -66,3 +66,65 @@ export const searchedQuestionsAction = (questions: QuestionData[]) =>
     type: SEARCHEDQUESTIONS,
     questions,
   } as const);
+
+// Expects a function type to be passed in
+type QuestionsActions =
+  | ReturnType<typeof gettingUnansweredQuestionsAction>
+  | ReturnType<typeof gotUnansweredQuestionsAction>
+  | ReturnType<typeof gettingQuestionAction>
+  | ReturnType<typeof gotQuestionAction>
+  | ReturnType<typeof searchingQuestionsAction>
+  | ReturnType<typeof searchedQuestionsAction>;
+
+// Skeleton reducer function
+const questionsReducer = (
+  state = initialQuestionState,
+  action: QuestionsActions
+) => {
+  // Handle Difference action and returns
+  switch (action.type) {
+    case GETTINGUNANSWEREDQUESTIONS: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case GOTUNANSWEREDQUESTIONS: {
+      return {
+        ...state,
+        unanswered: action.question,
+        loading: false,
+      };
+    }
+    case GETTINGQUESTION: {
+      return {
+        ...state,
+        viewing: null,
+        loading: true,
+      };
+    }
+    case GOTQUESTION: {
+      return {
+        ...state,
+        viewing: action.question,
+        loading: true,
+      };
+    }
+    case SEARCHINGQUESTIONS: {
+      return {
+        ...state,
+        searched: [],
+        loading: true,
+      };
+    }
+    case SEARCHEDQUESTIONS: {
+      return {
+        ...state,
+        searched: action.questions,
+        loading: false,
+      };
+    }
+  }
+  // New state
+  return state;
+};
